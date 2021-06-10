@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
+ * oddedene z JpaRepository
  */
 @Repository
 public interface RodicRepository extends JpaRepository<Rodic, Integer> {

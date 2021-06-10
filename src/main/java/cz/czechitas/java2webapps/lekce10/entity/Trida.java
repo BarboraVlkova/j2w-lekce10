@@ -11,18 +11,33 @@ import javax.persistence.OrderBy;
 import java.util.List;
 
 /**
+ *
  */
+
+
 @Entity
 public class Trida {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Short id;
 
+
   private String nazev;
+
+  /**
+   * povinny udaj, trida musi mit tridniho ucitele
+   * @JoinColumn <- rika, ktery sloupecek vyjadruje vazbu <-  v tabulce trida je "tridni_ucitel_id"
+   */
 
   @OneToOne(optional = false)
   @JoinColumn(name = "tridni_ucitel_id")
   private Ucitel tridniUcitel;
+
+  /**
+   * List<Student> <- mam vice studentu, nez 1
+   * @OrderBy <- anotace pro serazeni zaznamu (prijmeni, jmeno)
+   */
 
   @OneToMany(mappedBy = "trida")
   @OrderBy(value="prijmeni, jmeno")

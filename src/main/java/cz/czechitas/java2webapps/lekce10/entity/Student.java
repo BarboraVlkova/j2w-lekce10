@@ -13,10 +13,16 @@ import java.util.List;
 import java.util.Set;
 
 /**
- *
+ * @ManyToOne - vic studentu muze byt ve jedne tride
+ * @ManyToMany - odpovidajici typ je List (seznam studentu)
+ * @OrderBy - jakym zpusobem chci tabulku seradit
+ * @ManyToMany - vice studentu muze mit vice rodicu a obracene
  */
+
+
 @Entity
 public class Student {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -24,8 +30,10 @@ public class Student {
   private String jmeno;
   private String prijmeni;
 
+
   @ManyToOne
   private Trida trida;
+
 
   public Integer getId() {
     return id;

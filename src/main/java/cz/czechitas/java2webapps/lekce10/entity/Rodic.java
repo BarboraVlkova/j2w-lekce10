@@ -12,10 +12,13 @@ import java.util.List;
 import java.util.Set;
 
 /**
- *
+ * vazba pomoci trett tabulky
  */
+
+
 @Entity
 public class Rodic {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
@@ -25,12 +28,19 @@ public class Rodic {
   private String email;
   private String telefon;
 
+  /**
+   * @JoinTable name = "student_rodic" <- urcuje vazebni tabulku
+   * joinColumns <- atribut, pojmenovani sloupecku ve vazebni tabulce
+   * inverseJoinColumns <- atribut, pojmenovani sloupecku ve vazebni tabulce protejsi strany
+   */
+
   @ManyToMany
   @JoinTable(
           name = "student_rodic",
           joinColumns = @JoinColumn(name = "rodic_id"),
           inverseJoinColumns = @JoinColumn(name = "student_id")
   )
+
   @OrderBy(value="prijmeni, jmeno")
   private List<Student> deti;
 

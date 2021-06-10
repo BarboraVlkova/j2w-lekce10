@@ -22,7 +22,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Třída pro testování přístupu do databáze.
+ * vytvorim constructor
+ * @Autowired <- pouzij tento constructor a dopln tyto implementace RodicRepository rodicRepository ...
+ * jedna metoda = jeden test
  */
+
+
+
 @SpringBootTest
 public class DatabaseTest {
   private final Logger logger = LoggerFactory.getLogger(DatabaseTest.class);
@@ -32,6 +38,7 @@ public class DatabaseTest {
   private final TridaRepository tridaRepository;
   private final UcitelRepository ucitelRepository;
 
+
   @Autowired
   public DatabaseTest(RodicRepository rodicRepository, StudentRepository studentRepository, TridaRepository tridaRepository, UcitelRepository ucitelRepository) {
     this.rodicRepository = rodicRepository;
@@ -39,6 +46,31 @@ public class DatabaseTest {
     this.tridaRepository = tridaRepository;
     this.ucitelRepository = ucitelRepository;
   }
+
+
+  /**
+   * mnou vytvorena metoda pro testovani
+   * // vypise se vysledek do konzole
+   * String + {} meyi ne se vypise to. co je dalsi parametr metody, muze byt vice
+   *
+   */
+
+  @Test
+  @Transactional
+  void mujTest() {
+    Student student = studentRepository.getOne(1);
+//    System.out.println(student);
+    logger.debug("Nasel jsem studenta: {}", student);
+    logger.debug("Chodi do tridy: {}", student.getTrida());
+    for (Rodic rodic : student.getRodice()) {
+      logger.debug("Rodic: {}", rodic );
+    }
+  }
+
+
+  /**
+   * @Transactional <- zaridi, ze jsem stale pripojena k databazi
+   */
 
   @Test
   @Transactional
@@ -50,6 +82,11 @@ public class DatabaseTest {
             () -> assertEquals("Michal", student.getJmeno()),
             () -> assertEquals("Kubát", student.getPrijmeni())
     );
+
+    /**
+     * ocekavam ze vysledek bude 2 + ktery kod chci otestovat
+     * z databaze ziskam studenta, seznam jeho rodicu a ocekavam vysledek 2
+     */
 
     assertEquals(2, student.getRodice().size());
     for (Rodic rodic : student.getRodice()) {
@@ -84,7 +121,8 @@ public class DatabaseTest {
 
     Trida trida = ucitel.getTrida();
     logger.debug("Je třídní ve třídě: {}", trida);
-  }
+    assertNotNull(trida);
+    assertEquals("1.A", trida.getNazev());  }
 
   @Test
   @Transactional
