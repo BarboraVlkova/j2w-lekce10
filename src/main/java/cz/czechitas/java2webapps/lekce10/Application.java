@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <p>
  * Anotace {@link SpringBootApplication} oznamuje Springu, že se jedná o aplikaci typu Spring Boot a má použít výchozí konfiguraci všude, kde je to možné.
  */
+
 @SpringBootApplication
 public class Application {
   /**
@@ -15,6 +16,7 @@ public class Application {
    *
    * @param args Argumenty z příkazové řádky při spuštění aplikace.
    */
+
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }

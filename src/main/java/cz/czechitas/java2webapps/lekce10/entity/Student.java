@@ -30,7 +30,6 @@ public class Student {
   private String jmeno;
   private String prijmeni;
 
-
   @ManyToOne
   private Trida trida;
 

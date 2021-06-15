@@ -12,9 +12,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * vazba pomoci trett tabulky
+ * vazba pomoci treti tabulky
  */
-
 
 @Entity
 public class Rodic {

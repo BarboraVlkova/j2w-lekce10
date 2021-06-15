@@ -21,8 +21,6 @@ public class Trida {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Short id;
-
-
   private String nazev;
 
   /**

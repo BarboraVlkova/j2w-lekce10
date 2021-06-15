@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ZŠ v Praze</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+
+<body>
+<div class="container">
+    <h1 class="block">Seznam tříd</h1>
+    <div th:each="trida: ${tridy}">
+        <ul class="blockList"></ul>
+        <a th:href="@{|/${trida.id}|}">
+            <div th:text="${trida.nazev}"></div></a>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Informace o studentovi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+
+<body>
+<span th:text="${studentJmeno.jmeno}"></span>
+<span th:text="${studentJmeno.prijmeni}"></span>
+
+<a th:href="@{/detailStudenta.html.trida}"></a>
+
+<div th:each="rodic: ${studentJmeno.rodice}">
+    <p>Rodiče: <span th:text="${rodic.jmeno}" ></span>
+        <span th:text="${rodic.prijmeni}"></span></p>
+    <p>Telefon: <span th:text="${rodic.telefon}"></span></p>
+</div>
+
+<div>
+    <a th:href="@{/}">Zpět na seznam</a>
+</div>
+
+</body>
+</html>

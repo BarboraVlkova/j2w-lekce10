@@ -18,8 +18,6 @@ public class Ucitel {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-
-
   private String jmeno;
   private String prijmeni;
 
@@ -28,6 +26,7 @@ public class Ucitel {
    * mappedBy <- ve tride trida je property je "tridniUcitel"
    * na jedne strane nakonfiguruju, na druhe strane rikam k cemu se vaze
    */
+
   @OneToOne(mappedBy = "tridniUcitel")
   private Trida trida;
 
